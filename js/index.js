@@ -136,8 +136,8 @@ const displayAIDetail = (detail, features) => {
                   
                   <div>
                       <h4>Integrations</h4>
-                      <ul>
-                     
+                      <ul id="idIntegration">
+                      
                       </ul>
                   </div>
 
@@ -163,7 +163,15 @@ const displayAIDetail = (detail, features) => {
       
   <div>
   `;
+  const integrationsList = document.getElementById('idIntegration')
+    detail.integrations.forEach(integration => {
+        console.log(integration);
+        const li = document.createElement('li');
+            li.innerText = `${integration? integration:"Not Found Data"}`;
+            integrationsList.appendChild(li);
+    })
   // <-------------Validation for null Accuracy ------------>
+
   const accuracy = document.getElementById('accuracy');
   if (detail.accuracy.score === null) {
       accuracy.classList.add('d-none')
