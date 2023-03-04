@@ -1,5 +1,4 @@
 // <-------allData Fetching-------->
-
 const loadAllData = async () => {
   toggleSpinner(true)
   const url = `https://openapi.programming-hero.com/api/ai/tools`
@@ -13,7 +12,6 @@ const loadAllData = async () => {
       console.log(error);
   }
 }
-
 // <--------------Spinner----------->
 const toggleSpinner = isLoading => {
   const loaderSection = document.getElementById('spinner-container');
@@ -24,7 +22,6 @@ const toggleSpinner = isLoading => {
       loaderSection.classList.add('d-none')
   }
 }
-
 // <----------Full Data Load by Slicing for first page------------->
 const allToolsDataLoad = async () => {
   toggleSpinner(true)
@@ -44,14 +41,12 @@ const allToolsDataLoad = async () => {
   }
 }
 // <------------single Data ----------->
-
 const displayTools = (tools) => {
   const toolsContainer = document.getElementById('tools-container');
   tools.forEach(singleTool => {
       console.log(singleTool);
       const divTool = document.createElement('div');
       divTool.classList.add("col");
-
       divTool.innerHTML = `
                       <div class="card p-5 h-100">
                           <img src="${singleTool.image}" class="card-img-top" alt="...">
@@ -88,12 +83,10 @@ const loadDetails = async id => {
   console.log(data)
   displayAIDetail(data.data, data.data.features);
 }
-
 // <---------------Show Details into the Modal------------->
 const displayAIDetail = (detail, features) => {
   console.log(detail, features)
   const { feature_name } = features
-
   const modalBody = document.getElementById('modalBody');
   modalBody.innerHTML = `
   <div class=" min-width ">
@@ -136,23 +129,20 @@ const displayAIDetail = (detail, features) => {
                   
                   <div>
                       <h4>Integrations</h4>
+                      <ul>
+                     
                       <ul id="idIntegration">
                       
                       </ul>
                   </div>
-
           </div>
-
       </div>
-
       </div>
       <div class="col">
           <div class="border border-danger-subtle p-3 rounded h-100 ">
               <div class="card-imf-overlay">
                   <img class="img-fluid rounded"  src="${detail.image_link[0] ? detail.image_link[0] : detail.image_link[1]}"alt="">
-
-                  <p id="accuracy" class=" d-none m-5  bg-danger rounded-pill text-light badge p-2 position-absolute top-0 end-0 ">${detail.accuracy.score * 100}% Accuracy</p>
-
+                  <p id="accuracy" class=" d-none m-5  bg-danger rounded text-light badge p-2 position-absolute top-0 end-0 ">${detail.accuracy.score * 100}% Accuracy</p>
               </div>
               <div class="card-body text-center mt-4">
                   <h5 class="card-title">${detail.input_output_examples ? detail.input_output_examples[0].input : "No! Not Yet! Take a break!!!"}</h5>
