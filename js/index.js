@@ -41,31 +41,31 @@ const allToolsDataLoad = async () => {
   }
 }
 // <------------single Data ----------->
-const displayTools = (tools) => {
-  const toolsContainer = document.getElementById('tools-container');
-  tools.forEach(singleTool => {
-      console.log(singleTool);
+const displayTools = (elements) => {
+  const toolsContainer = document.getElementById('toolsContainer');
+  elements.forEach(element => {
+      // console.log(element);
       const divTool = document.createElement('div');
       divTool.classList.add("col");
       divTool.innerHTML = `
                       <div class="card p-5 h-100">
-                          <img src="${singleTool.image}" class="card-img-top" alt="...">
+                          <img src="${element.image}" class="card-img-top" alt="...">
                           <div class="card-body mb-5">
                               <h5 class="card-title fw-bold">Features</h5>
                               <ol id="li-container" class =" card-text">
-                              ${singleTool.features[0] ? `<li>${singleTool.features[0]}</li>`: '' }
-                              ${singleTool.features[1] ? `<li>${singleTool.features[1]}</li>`: '' }
-                              ${singleTool.features[2] ? `<li>${singleTool.features[2]}</li>`: '' }
-                              ${singleTool.features[3] ? `<li>${singleTool.features[3]}</li>`: '' }
+                              ${element.features[0] ? `<li>${element.features[0]}</li>`: '' }
+                              ${element.features[1] ? `<li>${element.features[1]}</li>`: '' }
+                              ${element.features[2] ? `<li>${element.features[2]}</li>`: '' }
+                              ${element.features[3] ? `<li>${element.features[3]}</li>`: '' }
                               </ol>
                           </div>
                           <div class="card-footer d-flex justify-content-between align-items-center">
                               <div>
-                              <h5 class ="mt-2">${singleTool.name}</h5>
-                              <p class="mt-3"> <i class="fa-solid fa-calendar-days"></i> ${singleTool.published_in}</p>
+                              <h5 class ="mt-2">${element.name}</h5>
+                              <p class="mt-3"> <i class="fa-solid fa-calendar-days"></i> ${element.published_in}</p>
                               </div>
                               <div>
-                              <span onclick="loadDetails('${singleTool.id}')" href="#" class="border border-0" data-bs-toggle="modal" data-bs-target="#AIDetailsModal">  <i class="fa-solid fa-arrow-right text-danger  w-100  p-2 opacity-50 bg-danger-subtle rounded-circle"></i> </span>
+                              <span onclick="loadDetails('${element.id}')" href="#" class="border border-0" data-bs-toggle="modal" data-bs-target="#AIDetailsModal">  <i class="fa-solid fa-arrow-right text-danger  w-100  p-2 opacity-50 bg-danger-subtle rounded-circle"></i> </span>
                               </div> 
                           </div>
                       </div>
@@ -82,7 +82,7 @@ const loadDetails = async id => {
   const data = await res.json();
   console.log(data)
   displayAIDetail(data.data, data.data.features);
-}
+};
 // <---------------Show Details into the Modal------------->
 const displayAIDetail = (detail, features) => {
   console.log(detail, features)
@@ -169,4 +169,4 @@ const displayAIDetail = (detail, features) => {
   else {
       accuracy.classList.remove('d-none')
   }
-}
+};
