@@ -13,3 +13,14 @@ const loadAllData = async () => {
       console.log(error);
   }
 }
+
+// <--------------Spinner----------->
+const toggleSpinner = isLoading => {
+  const loaderSection = document.getElementById('spinner-container');
+  if (isLoading) {
+      loaderSection.classList.remove('d-none')
+  }
+  else {
+      loaderSection.classList.add('d-none')
+  }
+}
